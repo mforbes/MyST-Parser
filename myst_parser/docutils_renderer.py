@@ -1082,6 +1082,7 @@ class DocutilsRenderer(RendererProtocol):
 
         # fail on undefined variables
         env = jinja2.Environment(undefined=jinja2.StrictUndefined)
+        env.filters["subs"] = lambda value: value.format(**variable_context)
 
         # try rendering
         try:
